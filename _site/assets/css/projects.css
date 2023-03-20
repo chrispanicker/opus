@@ -29,8 +29,16 @@
 	font-size: 1.4vw;
 }
 
+main{
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 .gallery{
-	padding: 10vw 0 10vw 0;
+	padding: 10vw 0 3vw 0;
 	width: 98vw;
 	height: fit-content;
 	flex-direction: column-reverse;
@@ -54,8 +62,12 @@
 	transition: width .3s ease;
 }
 
-#preview:hover{
+img#preview:hover{
 	cursor: zoom-in;
+	width: 61vw;
+}
+
+video#preview:hover{
 	width: 61vw;
 }
 
@@ -87,6 +99,47 @@ change h2:hover{
 	cursor: pointer;
 }
 
+change h2:nth-of-type(10n){
+	animation-delay: -1s;
+}
+
+change h2:nth-of-type(10n+1){
+	animation-delay: -.9s;
+}
+
+change h2:nth-of-type(10n+2){
+	animation-delay: -.8s;
+}
+
+change h2:nth-of-type(10n+3){
+	animation-delay: -.7s;
+}
+
+change h2:nth-of-type(10n+4){
+	animation-delay: -.6s;
+}
+
+change h2:nth-of-type(10n+5){
+	animation-delay: -.5s;
+}
+
+change h2:nth-of-type(10n+6){
+	animation-delay: -.4s;
+}
+
+change h2:nth-of-type(10n+7){
+	animation-delay: -.3s;
+}
+
+change h2:nth-of-type(10n+8){
+	animation-delay: -.2s;
+}
+
+change h2:nth-of-type(10n+9){
+	animation-delay: -.1s;
+}
+
+
 #fullscreen{
 	position: absolute;
 	top: 0;
@@ -101,4 +154,8 @@ change h2:hover{
 
 .hide{
 	display: none;
+}
+
+#fullDesc{
+	color: var(--secondary-color);
 }

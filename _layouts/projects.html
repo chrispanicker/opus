@@ -17,14 +17,18 @@
 		<h2><change><change></h2>
 		<h4>{{ page.description}}</h4>	
 	</span>
-	<section class='gallery'>
+	<main>
+		<section class='gallery'>
 
-	</section>
+		</section>
 
-	<section id="fullscreen">
-		
-	</section>
-
+		<section id="fullscreen">
+			
+		</section>
+		<section id="fullDesc">
+			<h2>{{ page.fullDesc }}</h2>
+		</section>
+	</main>
 	<footer><a href={{"about.html" | relativeurl }}>About</a> <a href={{ "index.html" | relativeurl }}><div id="logo" ></div></a></footer>
 
 	{% include projectpage.html %}

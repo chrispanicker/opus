@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href={{ "assets/css/fonts.css" | relativeurl }}>
 	<link rel="stylesheet" type="text/css" href={{ "assets/css/gallery.css" | relativeurl }}>
 	<link rel="stylesheet" type="text/css" href={{ "assets/css/bio.css" | relativeurl }}>
+	<link rel="stylesheet" type="text/css" href={{ "assets/css/extras.css" | relativeurl }}>
 	<!-- <script type="module" src={{"assets/js/fontchange.js" | relativeurl }}></script> -->
 </head>
 <body>
@@ -19,11 +20,13 @@
 		<h2>Hi, I'm <change></change>. I am a <change></change> coder, <br><change></change> designer, and <change></change> skateboarder.</h2><br><br>
 	</section>
 
+	<h2 class="org">Here are some of my favorite projects:</h2>
 	<section class='gallery'>
 		{{ page.content }}
 	</section>
 
-	<section>
+	<h2 class="org">More Projects:</h2>
+	<section id="funProjects">
 		{% include extraprojects.html %}
 	</section>
 

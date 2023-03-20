@@ -13,14 +13,18 @@
 		<h2><change><change></h2>
 		<h4>An interactive memoir of my personal experience of being a second-gen American immigrant. <a href="https://chrispanicker.github.io/thebackofmyhand/index.html">Link</a></h4>	
 	</span>
-	<section class='gallery'>
+	<main>
+		<section class='gallery'>
 
-	</section>
+		</section>
 
-	<section id="fullscreen">
-		
-	</section>
-
+		<section id="fullscreen">
+			
+		</section>
+		<section id="fullDesc">
+			<h2>There are various forms of unconvential interaction I included throughout to create an experimental web-narrative. <br> I used the typeface "Tarsus," by Khyati Trehan and the Indian Type Foundry for this project.</h2>
+		</section>
+	</main>
 	<footer><a href=about.html>About</a> <a href=index.html><div id="logo" ></div></a></footer>
 
 	---
@@ -51,7 +55,10 @@ layout: blank
 				this.createPreviewImg(allSrcs);
 			} else if(allSrcs[0].includes(".mp4")){
 				this.createPreviewVid(allSrcs);
+			} else if(allSrcs[0].includes(".mov")){
+				this.createPreviewVid(allSrcs);
 			}
+
 
 			this.mouseOvers();
 		}
@@ -67,6 +74,11 @@ layout: blank
 					img.classList.add("lil-imgs")
 					imgNav.append(img);
 				}else if(srcArray[i].includes(".mp4")){
+					let vid = document.createElement('video');
+					vid.src = srcArray[i];
+					vid.classList.add("lil-imgs")
+					imgNav.append(vid);
+				}else if(srcArray[i].includes(".mov")){
 					let vid = document.createElement('video');
 					vid.src = srcArray[i];
 					vid.classList.add("lil-imgs")
@@ -123,9 +135,7 @@ layout: blank
 	projectView.render();
 </script>
 
-	---
-layout: blank
----
+	
 
 <script type="text/javascript">
 	//hello curious friend :) 

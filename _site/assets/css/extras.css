@@ -1,0 +1,85 @@
+#funProjects{
+	padding: 0 0 0 1vw;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+}
+
+#funProjects h2{
+	font-size: 1vw;
+}
+
+#funProjects .hide{
+	pointer-events: none;
+	margin: 5vw 10vw 0 1vw;
+	font-size: 1vw;
+	opacity: 0%;
+	transition: opacity .3s ease;
+	z-index: -1;
+}
+
+#extraPreview{
+	display: flex;
+	height: 30vw;
+	color: var(--secondary-color);
+	font-family: "FrGth-Cond";
+	font-size: .8vw;
+	flex-direction: column;
+}
+
+#extraPreview img{
+	position: absolute;
+	height: 10vw;
+	opacity: 100%;
+	transition: height .3s ease, opacity .3s ease;
+}
+
+#extraPreview video{
+	position: absolute;
+	height: 10vw;
+	opacity: 100%;
+	transition: height .3s ease, opacity .3s ease;
+}
+
+
+#extraPreview img:hover{
+	height: 10.2vw;
+	opacity: 10%;
+	cursor: pointer;
+}
+
+#extraPreview video:hover{
+	height: 10.2vw;
+	opacity: 10%;
+	cursor: pointer;
+}
+
+#extraPreview h2{
+	font-size: 1.3vw;
+	padding: 10.2vw 0 0 .1vw;
+	position: absolute;
+	z-index: -1;
+}
+
+#extraPreview img:hover +h2{ 
+	text-decoration: underline;
+}
+
+#extraPreview video:hover +h2{ 
+	text-decoration: underline;
+}
+
+#extraPreview a:hover + .hide{ 
+	opacity: 100%;
+	z-index: 1;
+}
+
+/*#extraPreview video:hover + .hide{ 
+	opacity: 100%;
+	z-index: 1;
+}*/
+
+@keyframes dancy {
+  0%   {transform: rotate(0deg);}
+  50%  {transform: rotate(.2deg);}
+  100%  {transform: rotate(-.2deg;}
+}

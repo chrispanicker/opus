@@ -26,7 +26,10 @@ layout: blank
 				this.createPreviewImg(allSrcs);
 			} else if(allSrcs[0].includes(".mp4")){
 				this.createPreviewVid(allSrcs);
+			} else if(allSrcs[0].includes(".mov")){
+				this.createPreviewVid(allSrcs);
 			}
+
 
 			this.mouseOvers();
 		}
@@ -42,6 +45,11 @@ layout: blank
 					img.classList.add("lil-imgs")
 					imgNav.append(img);
 				}else if(srcArray[i].includes(".mp4")){
+					let vid = document.createElement('video');
+					vid.src = srcArray[i];
+					vid.classList.add("lil-imgs")
+					imgNav.append(vid);
+				}else if(srcArray[i].includes(".mov")){
 					let vid = document.createElement('video');
 					vid.src = srcArray[i];
 					vid.classList.add("lil-imgs")
