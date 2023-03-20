@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href=assets/css/main.css>
+	<link rel="stylesheet" type="text/css" href=assets/css/fonts.css>
+	<link rel="stylesheet" type="text/css" href=assets/css/about.css>
+</head>
+<body>
+
+	<section id="main">
+		<h2 id="title"><change></change></h2>
+		<p>So you want to know more about me? That's cool.</p><br><br>
+
+<p>I'm currently in my final year of Communication Design at Parsons. <br><br> 
+	With design, I constantly try to find new ways to make whatever it is that I may be making. I try to think of my work as holistically <change></change> reaching and engaging with people in some capacity.</p><br><br>
+
+<h2>What do I do?</h2>
+<p>My coursework at Parsons has included branding, web design, animated short films, 3D art, photography, and video. I also have worked as a freelance designer, photographer, and videographer.</p><br><br>
+<p>I work with the Adobe Creative Suite, AutoDesk Maya, Unreal, HTML, CSS, Javascript. </p><br><br>
+
+<h2>Reach out, I'd love to chat.</h2>
+<a href="mailto:hello@panicker.design">hello@panicker.design</a>
+	</section>
+	<footer><a href=about.html>About</a> <a href=index.html><div id="logo" ></div></a></footer>
+
+	---
+layout: blank
+---
+
+<script type="text/javascript">
+	//hello curious friend :) 
+	//this module is what makes the logo letters change fonts on hover
+	
+	let logoDiv = document.querySelector("#logo");
+	let changeStrs = ['About Me...', 'interactive,'];
+	let changeEls = document.querySelectorAll('change');
+	let fontList = ["FrGth-Cond", "sans-serif", 'baldur', 'hobeaux-roco', 'picnic', 'sans-black', 'bodoni-mt', 'serif'];
+	let me = "Chris\xa0Panicker";
+	
+	
+	//-------------------------------------------------------------
+	class fontChange {
+	
+		constructor(str, parent, elementType){
+			this.str = str;
+			this.parent = parent;
+			this.element = elementType;
+			this.index = 0;
+		}
+	
+		render(){
+			// this.intervalStart();
+			this.loopThruStr();
+		}
+	
+		loopThruStr(){
+			for(let i=0; i<this.str.length; i++){
+				let thisLetter = document.createElement(this.element);
+				thisLetter.innerHTML = this.str[i];
+				thisLetter.addEventListener("mouseenter", () =>{
+					this.intervalStart(thisLetter);
+				})
+				
+				this.parent.append(thisLetter);
+			};
+		}
+	
+		intervalStart(thisLetter){
+			let interval = setInterval(()=>{
+				this.index++
+				if(this.index>=fontList.length){
+					this.index=0;
+				}
+				thisLetter.style.fontFamily = fontList[this.index];
+				thisLetter.style.animation = "none";
+			}, 100)
+	
+			thisLetter.addEventListener("mouseleave", () => {
+				clearInterval(interval)
+			})
+		}
+	
+	
+	}
+	
+	const logo = new fontChange(me, logoDiv, "h1");
+	logo.render();
+	
+	for(let i=0; i<changeStrs.length; i++){
+		let oneStr = new fontChange(changeStrs[i], changeEls[i], "h2");
+		oneStr.render();
+	}
+</script>
+</body>
+</html>

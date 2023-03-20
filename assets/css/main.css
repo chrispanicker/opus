@@ -1,0 +1,64 @@
+:root {
+    --main-color: black;
+    --secondary-color: white;
+}
+
+*{
+	font-family: 'FrGth-Cond';
+}
+
+footer{
+	position: fixed;
+	padding: 0vw 1vw 0 1vw;
+	bottom: 0;
+	width: 97vw;
+	height: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--secondary-color);
+	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 18%, rgba(0,0,0,0) 100%);
+}
+
+body{ 
+	background-color: var(--main-color); 
+}
+
+a{
+	text-decoration: none;
+	color: var(--secondary-color);
+	transition: font-size .3s ease;
+	font-size: 1vw;
+}
+
+footer a:hover{
+	font-size: 1.1vw;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+h1{
+	font-family: 'FrGth-Cond';
+	font-size: 2vw;
+	cursor: pointer;
+	transition: font-size .3s ease;
+}
+
+
+#logo{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
+section{
+	margin: 0 1vw 0 .5vw;
+}
+
+@keyframes highlight{
+	0%{ opacity: 70%; }
+	50%{ opacity: 100%; }
+	100%{ opacity: 70%; }
+}

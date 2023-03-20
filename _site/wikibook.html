@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href=assets/css/main.css>
+	<link rel="stylesheet" type="text/css" href=assets/css/fonts.css>
+	<link rel="stylesheet" type="text/css" href=assets/css/projects.css>
+</head>
+<body>
+	<span id="title">
+		<h2><change><change></h2>
+		<h4>A book on the Reliability of Wikipedia, sourced from Wikipedia.</h4>	
+	</span>
+	<section class='gallery'>
+
+	</section>
+
+	<section id="fullscreen">
+		
+	</section>
+
+	<footer><a href=about.html>About</a> <a href=index.html><div id="logo" ></div></a></footer>
+
+	---
+layout: blank
+---
+
+<script type="text/javascript">
+	let parentEl = document.querySelector(".gallery");
+	class project{
+		constructor(parent, filepath, filetype, amt){
+			this.parent= parent;
+			this.filepath= filepath;
+			this.filetype= filetype;
+			this.amt= amt
+		}
+
+		render(){
+			this.createSrcArray();
+		}
+
+		createSrcArray(){
+			let allSrcs = [];
+			for(let i=1; i<= this.amt ; i++){
+				allSrcs[i-1] = this.filepath + i + this.filetype;
+			}
+			this.createEls(allSrcs);
+			if(allSrcs[0].includes(".jpg")){
+				this.createPreviewImg(allSrcs);
+			} else if(allSrcs[0].includes(".mp4")){
+				this.createPreviewVid(allSrcs);
+			}
+
+			this.mouseOvers();
+		}
+
+
+		createEls(srcArray){
+			let imgNav = document.createElement('div');
+			imgNav.id = "imgNav"
+			for(let i=0; i<srcArray.length; i++){
+				if(srcArray[i].includes(".jpg")){
+					let img = document.createElement('img');
+					img.src = srcArray[i];
+					img.classList.add("lil-imgs")
+					imgNav.append(img);
+				}else if(srcArray[i].includes(".mp4")){
+					let vid = document.createElement('video');
+					vid.src = srcArray[i];
+					vid.classList.add("lil-imgs")
+					imgNav.append(vid);
+				}
+			}
+			this.parent.append(imgNav);
+		}
+
+		createPreviewImg(srcArray){
+			let img = document.createElement('img');
+			let fullscreenSect = document.querySelector("#fullscreen");
+			let fsImg = document.createElement('img')
+			img.src = srcArray[0];
+			fsImg.src = srcArray[0];
+			fsImg.classList.add("hide");
+			img.id = "preview"
+			img.addEventListener("click", () => {
+				fsImg.classList.toggle("hide");
+			})
+			fsImg.addEventListener("click", () => {
+				fsImg.classList.toggle("hide");
+			})
+			this.parent.append(img);
+			fullscreenSect.append(fsImg);
+		}
+
+		createPreviewVid(srcArray){
+			let vid = document.createElement('video');
+			vid.src = srcArray[0];
+			vid.id = "preview"
+			vid.autoplay = true;
+			vid.muted = true;
+			vid.controls = true;
+			this.parent.append(vid);
+		}
+
+		mouseOvers(){
+			let allImgs = document.querySelectorAll(".lil-imgs");
+			for(let i=0; i<allImgs.length; i++){
+				if(allImgs[i].src.includes('.jpg')){
+						allImgs[i].addEventListener("click", () => {
+						let prevImgEl = document.querySelector("#preview");
+						let fsImgEl = document.querySelector("#fullscreen img")
+						prevImgEl.src = allImgs[i].src;
+						fsImgEl.src = allImgs[i].src;
+					})
+				}
+			}
+		}
+	}
+
+	const projectView = new project(parentEl, `assets/images/wikibook/wiki`,`.jpg`,`9`,)
+	projectView.render();
+</script>
+
+	---
+layout: blank
+---
+
+<script type="text/javascript">
+	//hello curious friend :) 
+	//this module is what makes the logo letters change fonts on hover
+	
+	let logoDiv = document.querySelector("#logo");
+	let changeStrs = ['The Reliability of Wikipedia (2021)'];
+	let changeEls = document.querySelectorAll('change');
+	let fontList = ["FrGth-Cond", "sans-serif", 'baldur', 'hobeaux-roco', 'picnic', 'sans-black', 'bodoni-mt', 'serif'];
+	let me = "Chris\xa0Panicker";
+	
+	
+	//-------------------------------------------------------------
+	class fontChange {
+	
+		constructor(str, parent, elementType){
+			this.str = str;
+			this.parent = parent;
+			this.element = elementType;
+			this.index = 0;
+		}
+	
+		render(){
+			// this.intervalStart();
+			this.loopThruStr();
+		}
+	
+		loopThruStr(){
+			for(let i=0; i<this.str.length; i++){
+				let thisLetter = document.createElement(this.element);
+				thisLetter.innerHTML = this.str[i];
+				thisLetter.addEventListener("mouseenter", () =>{
+					this.intervalStart(thisLetter);
+				})
+				
+				this.parent.append(thisLetter);
+			};
+		}
+	
+		intervalStart(thisLetter){
+			let interval = setInterval(()=>{
+				this.index++
+				if(this.index>=fontList.length){
+					this.index=0;
+				}
+				thisLetter.style.fontFamily = fontList[this.index];
+				thisLetter.style.animation = "none";
+			}, 100)
+	
+			thisLetter.addEventListener("mouseleave", () => {
+				clearInterval(interval)
+			})
+		}
+	
+	
+	}
+	
+	const logo = new fontChange(me, logoDiv, "h1");
+	logo.render();
+	
+	for(let i=0; i<changeStrs.length; i++){
+		let oneStr = new fontChange(changeStrs[i], changeEls[i], "h2");
+		oneStr.render();
+	}
+</script>
+</body>
+</html>

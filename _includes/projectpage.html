@@ -1,0 +1,99 @@
+---
+layout: blank
+---
+
+<script type="text/javascript">
+	let parentEl = document.querySelector(".gallery");
+	class project{
+		constructor(parent, filepath, filetype, amt){
+			this.parent= parent;
+			this.filepath= filepath;
+			this.filetype= filetype;
+			this.amt= amt
+		}
+
+		render(){
+			this.createSrcArray();
+		}
+
+		createSrcArray(){
+			let allSrcs = [];
+			for(let i=1; i<= this.amt ; i++){
+				allSrcs[i-1] = this.filepath + i + this.filetype;
+			}
+			this.createEls(allSrcs);
+			if(allSrcs[0].includes(".jpg")){
+				this.createPreviewImg(allSrcs);
+			} else if(allSrcs[0].includes(".mp4")){
+				this.createPreviewVid(allSrcs);
+			}
+
+			this.mouseOvers();
+		}
+
+
+		createEls(srcArray){
+			let imgNav = document.createElement('div');
+			imgNav.id = "imgNav"
+			for(let i=0; i<srcArray.length; i++){
+				if(srcArray[i].includes(".jpg")){
+					let img = document.createElement('img');
+					img.src = srcArray[i];
+					img.classList.add("lil-imgs")
+					imgNav.append(img);
+				}else if(srcArray[i].includes(".mp4")){
+					let vid = document.createElement('video');
+					vid.src = srcArray[i];
+					vid.classList.add("lil-imgs")
+					imgNav.append(vid);
+				}
+			}
+			this.parent.append(imgNav);
+		}
+
+		createPreviewImg(srcArray){
+			let img = document.createElement('img');
+			let fullscreenSect = document.querySelector("#fullscreen");
+			let fsImg = document.createElement('img')
+			img.src = srcArray[0];
+			fsImg.src = srcArray[0];
+			fsImg.classList.add("hide");
+			img.id = "preview"
+			img.addEventListener("click", () => {
+				fsImg.classList.toggle("hide");
+			})
+			fsImg.addEventListener("click", () => {
+				fsImg.classList.toggle("hide");
+			})
+			this.parent.append(img);
+			fullscreenSect.append(fsImg);
+		}
+
+		createPreviewVid(srcArray){
+			let vid = document.createElement('video');
+			vid.src = srcArray[0];
+			vid.id = "preview"
+			vid.autoplay = true;
+			vid.muted = true;
+			vid.controls = true;
+			this.parent.append(vid);
+		}
+
+		mouseOvers(){
+			let allImgs = document.querySelectorAll(".lil-imgs");
+			for(let i=0; i<allImgs.length; i++){
+				if(allImgs[i].src.includes('.jpg')){
+						allImgs[i].addEventListener("click", () => {
+						let prevImgEl = document.querySelector("#preview");
+						let fsImgEl = document.querySelector("#fullscreen img")
+						prevImgEl.src = allImgs[i].src;
+						fsImgEl.src = allImgs[i].src;
+					})
+				}
+			}
+		}
+	}
+
+	const projectView = new project(parentEl, `{{page.filepath}}`,`{{page.filetype}}`,`{{page.amt}}`,)
+	projectView.render();
+</script>

@@ -1,0 +1,87 @@
+.gallery{
+	width: 85vw;
+	padding: 1vw 1vw 5vw 1vw;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.gallery h2{
+	font-size: 1vw;
+}
+
+.hide{
+	pointer-events: none;
+	margin: 23vw 0 0 1vw;
+	font-size: 1vw;
+	opacity: 0%;
+	transition: opacity .3s ease;
+	z-index: -1;
+}
+
+#preview{
+	display: flex;
+	height: 30vw;
+	color: var(--secondary-color);
+	font-family: "FrGth-Cond";
+	font-size: .8vw;
+	flex-direction: column;
+}
+
+#preview img{
+	position: absolute;
+	width: 45vw;
+	opacity: 100%;
+	transition: width .3s ease, opacity .3s ease;
+}
+
+#preview video{
+	position: absolute;
+	width: 45vw;
+	opacity: 100%;
+	transition: width .3s ease, opacity .3s ease;
+}
+
+
+#preview img:hover{
+	width: 45.2vw;
+	opacity: 20%;
+	cursor: pointer;
+}
+
+#preview video:hover{
+	width: 45.2vw;
+	opacity: 20%;
+	cursor: pointer;
+}
+
+#preview h2{
+	font-size: 1.3vw;
+	padding: 25vw 0 0 .1vw;
+	position: absolute;
+	z-index: -1;
+}
+
+#preview img:hover +h2{ 
+	text-decoration: underline;
+}
+
+#preview video:hover +h2{ 
+	text-decoration: underline;
+}
+
+#preview a:hover + .hide{ 
+	opacity: 100%;
+	z-index: 1;
+}
+
+/*#preview video:hover + .hide{ 
+	opacity: 100%;
+	z-index: 1;
+}*/
+
+@keyframes dancy {
+  0%   {transform: rotate(0deg);}
+  50%  {transform: rotate(.2deg);}
+  100%  {transform: rotate(-.2deg;}
+}
+

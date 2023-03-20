@@ -1,0 +1,104 @@
+#title{
+	top:0;
+	position: fixed;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	color: var(--secondary-color);
+	padding: 0 0 0 0;
+		background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 18%, rgba(0,0,0,0) 100%);
+}
+
+#title h2{
+	font-size: 3vw;
+	padding: 0;
+	padding-top: 1vw;
+	margin: 0;
+}
+
+#title h4{
+	font-size: 1.4vw;
+	padding: .9vw;
+	margin: 0;
+}
+
+#title a{
+	text-decoration: underline;
+	font-size: 1.4vw;
+}
+
+.gallery{
+	padding: 10vw 0 10vw 0;
+	width: 98vw;
+	height: fit-content;
+	flex-direction: column-reverse;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.gallery img{
+	width: 6vw;
+	transition: width .3s ease;
+}
+
+.gallery img:hover{
+	width: 7vw;
+}
+
+#preview{
+	width: 60vw;
+	height: auto;
+	transition: width .3s ease;
+}
+
+#preview:hover{
+	cursor: zoom-in;
+	width: 61vw;
+}
+
+#imgNav{
+	width: 60vw;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+#imgNav video{
+	display: none;
+}
+
+#imgNav img:hover{
+	cursor: pointer;
+}
+
+change h2{
+	font-size: inherit;
+	margin: 4vw 0 2vw 0;
+	animation: highlight 1s infinite;
+	display: inline-block;
+}
+
+
+change h2:hover{
+	text-decoration: underline dotted;
+	cursor: pointer;
+}
+
+#fullscreen{
+	position: absolute;
+	top: 0;
+	z-index: 100;
+}
+
+#fullscreen img{
+	width: 100vw;
+	height: auto;
+	cursor: zoom-out;
+}
+
+.hide{
+	display: none;
+}

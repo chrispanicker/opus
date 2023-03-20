@@ -1,0 +1,25 @@
+---
+
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href={{ "assets/css/main.css" | relativeurl }}>
+	<link rel="stylesheet" type="text/css" href={{ "assets/css/fonts.css" | relativeurl }}>
+	<link rel="stylesheet" type="text/css" href={{ "assets/css/about.css" | relativeurl }}>
+</head>
+<body>
+
+	<section id="main">
+		<h2 id="title"><change></change></h2>
+		{{page.content}}
+	</section>
+	<footer><a href={{"about.html" | relativeurl }}>About</a> <a href={{ "index.html" | relativeurl }}><div id="logo" ></div></a></footer>
+
+	{% include namechange.html %}
+</body>
+</html>
